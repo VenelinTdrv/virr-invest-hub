@@ -14,7 +14,7 @@ const Index = () => {
       <BalanceHeader balance="€1 648,25" userName="Венелин" />
 
       {/* Main Content */}
-      <div className="px-4 -mt-4 space-y-4">
+      <div className="px-4 mt-4 space-y-4">
         {/* Profit Cards Row */}
         <div className="grid grid-cols-2 gap-3">
           <StatCard
