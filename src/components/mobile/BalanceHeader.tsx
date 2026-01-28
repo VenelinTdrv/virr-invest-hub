@@ -11,7 +11,7 @@ const BalanceHeader = ({ balance, userName }: BalanceHeaderProps) => {
     <motion.div 
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="virr-gradient rounded-b-3xl px-5 pt-12 pb-8 text-primary-foreground"
+      className="virr-gradient rounded-b-3xl px-5 pt-12 pb-8 text-primary-foreground relative z-10"
     >
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
