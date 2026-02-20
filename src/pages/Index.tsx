@@ -69,7 +69,7 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="virr-gradient rounded-2xl p-4 virr-card-shadow"
+            className="virr-gradient-glass rounded-2xl p-4 virr-card-shadow"
           >
             <div className="flex items-center gap-2 mb-2">
               <ArrowDownRight className="w-4 h-4 text-primary-foreground/70" />
@@ -82,7 +82,7 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.45 }}
-            className="virr-gradient rounded-2xl p-4 virr-card-shadow"
+            className="virr-gradient-glass rounded-2xl p-4 virr-card-shadow"
           >
             <div className="flex items-center gap-2 mb-2">
               <ArrowUpRight className="w-4 h-4 text-primary-foreground/70" />

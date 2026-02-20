@@ -118,9 +118,30 @@
   .virr-gradient {
     background: linear-gradient(135deg, hsl(var(--virr-gradient-start)) 0%, hsl(var(--virr-gradient-end)) 100%);
   }
+
+  .virr-gradient-glass {
+    background: linear-gradient(135deg, hsl(var(--virr-gradient-start) / 0.75) 0%, hsl(var(--virr-gradient-end) / 0.75) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--primary) / 0.2);
+  }
+
+  .glass {
+    background: hsl(var(--card) / 0.55);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--border) / 0.4);
+  }
+
+  .glass-accent {
+    background: hsl(var(--accent) / 0.5);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid hsl(var(--border) / 0.3);
+  }
   
   .virr-card-shadow {
-    box-shadow: 0 4px 20px -4px hsl(var(--virr-card-shadow) / 0.3);
+    box-shadow: 0 8px 32px -8px hsl(var(--virr-card-shadow) / 0.25);
   }
   
   .virr-glow {

@@ -21,9 +21,9 @@ const StatCard = ({
   showChart = false
 }: StatCardProps) => {
   const variants = {
-    default: "bg-card",
-    primary: "virr-gradient text-primary-foreground",
-    accent: "bg-accent"
+    default: "glass",
+    primary: "virr-gradient-glass text-primary-foreground",
+    accent: "glass-accent"
   };
 
   const textVariants = {

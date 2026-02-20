@@ -14,7 +14,7 @@ const BottomNav = () => {
     <motion.div 
       initial={{ y: 100 }}
       animate={{ y: 0 }}
-      className="fixed bottom-0 left-0 right-0 bg-card border-t border-border px-2 pb-6 pt-2 virr-card-shadow"
+      className="fixed bottom-0 left-0 right-0 glass px-2 pb-6 pt-2 virr-card-shadow"
     >
       <div className="flex items-center justify-around">
         {navItems.map((item, index) => (
