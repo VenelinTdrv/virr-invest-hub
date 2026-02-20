@@ -30,7 +30,7 @@ const ProjectionChart = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.5 }}
-      className="glass rounded-2xl p-4 virr-card-shadow"
+      className="bg-card rounded-2xl p-4 virr-card-shadow"
     >
       <div className="flex items-center justify-between mb-4">
         <h3 className="font-semibold text-foreground">Очаквано салдо</h3>

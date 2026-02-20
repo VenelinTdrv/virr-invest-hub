@@ -54,7 +54,7 @@ const QuickStats = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 }}
-      className="glass rounded-2xl px-4 py-2 virr-card-shadow"
+      className="bg-card rounded-2xl px-4 py-2 virr-card-shadow"
     >
       {stats.map((stat, index) => (
         <QuickStat
