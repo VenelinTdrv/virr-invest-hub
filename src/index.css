@@ -17,33 +17,33 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 25% 10%;
 
-    --primary: 145 63% 42%;
+    --primary: 270 60% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 145 45% 35%;
+    --secondary: 280 50% 40%;
     --secondary-foreground: 0 0% 100%;
 
     --muted: 220 14% 92%;
     --muted-foreground: 220 10% 46%;
 
-    --accent: 145 50% 95%;
-    --accent-foreground: 145 63% 32%;
+    --accent: 270 50% 95%;
+    --accent-foreground: 270 60% 40%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 220 13% 90%;
     --input: 220 13% 90%;
-    --ring: 145 63% 42%;
+    --ring: 270 60% 50%;
 
     --radius: 1rem;
 
     /* Custom Virr tokens */
-    --virr-gradient-start: 145 70% 45%;
-    --virr-gradient-end: 155 65% 35%;
-    --virr-success: 145 63% 42%;
-    --virr-success-light: 145 60% 94%;
-    --virr-chart: 145 55% 50%;
+    --virr-gradient-start: 265 65% 55%;
+    --virr-gradient-end: 280 60% 40%;
+    --virr-success: 270 60% 50%;
+    --virr-success-light: 270 55% 94%;
+    --virr-chart: 270 50% 55%;
     --virr-card-shadow: 220 20% 85%;
     
     --sidebar-background: 0 0% 98%;
@@ -53,7 +53,7 @@
     --sidebar-accent: 240 4.8% 95.9%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 145 63% 42%;
+    --sidebar-ring: 270 60% 50%;
   }
 
   .dark {
@@ -66,40 +66,40 @@
     --popover: 220 25% 12%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 145 63% 48%;
+    --primary: 270 60% 55%;
     --primary-foreground: 220 25% 8%;
 
-    --secondary: 145 45% 40%;
+    --secondary: 280 50% 45%;
     --secondary-foreground: 0 0% 100%;
 
     --muted: 220 20% 18%;
     --muted-foreground: 220 10% 60%;
 
-    --accent: 145 40% 18%;
-    --accent-foreground: 145 63% 70%;
+    --accent: 270 40% 18%;
+    --accent-foreground: 270 60% 70%;
 
     --destructive: 0 62% 45%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 220 20% 18%;
     --input: 220 20% 18%;
-    --ring: 145 63% 48%;
+    --ring: 270 60% 55%;
 
-    --virr-gradient-start: 145 70% 50%;
-    --virr-gradient-end: 155 65% 40%;
-    --virr-success: 145 63% 48%;
-    --virr-success-light: 145 40% 18%;
-    --virr-chart: 145 55% 55%;
+    --virr-gradient-start: 265 65% 55%;
+    --virr-gradient-end: 280 60% 45%;
+    --virr-success: 270 60% 55%;
+    --virr-success-light: 270 40% 18%;
+    --virr-chart: 270 50% 60%;
     --virr-card-shadow: 220 25% 5%;
     
     --sidebar-background: 220 25% 10%;
     --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 145 63% 48%;
+    --sidebar-primary: 270 60% 55%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 220 20% 15%;
     --sidebar-accent-foreground: 0 0% 95%;
     --sidebar-border: 220 20% 18%;
-    --sidebar-ring: 145 63% 48%;
+    --sidebar-ring: 270 60% 55%;
   }
 }
 
