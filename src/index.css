@@ -39,11 +39,11 @@
     --radius: 1rem;
 
     /* Custom Virr tokens */
-    --virr-gradient-start: 145 70% 45%;
-    --virr-gradient-end: 155 65% 35%;
-    --virr-success: 145 63% 42%;
-    --virr-success-light: 145 60% 94%;
-    --virr-chart: 145 55% 50%;
+    --virr-gradient-start: 107 70% 45%;
+    --virr-gradient-end: 117 65% 35%;
+    --virr-success: 107 61% 42%;
+    --virr-success-light: 107 60% 94%;
+    --virr-chart: 107 55% 50%;
     --virr-card-shadow: 220 20% 85%;
     
     --sidebar-background: 0 0% 98%;
