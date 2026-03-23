@@ -85,11 +85,11 @@
     --input: 220 20% 18%;
     --ring: 107 61% 48%;
 
-    --virr-gradient-start: 145 70% 50%;
-    --virr-gradient-end: 155 65% 40%;
-    --virr-success: 145 63% 48%;
-    --virr-success-light: 145 40% 18%;
-    --virr-chart: 145 55% 55%;
+    --virr-gradient-start: 107 70% 50%;
+    --virr-gradient-end: 117 65% 40%;
+    --virr-success: 107 61% 48%;
+    --virr-success-light: 107 40% 18%;
+    --virr-chart: 107 55% 55%;
     --virr-card-shadow: 220 25% 5%;
     
     --sidebar-background: 220 25% 10%;
