@@ -13,6 +13,7 @@ import Transactions from "./pages/Transactions";
 import Portfolio from "./pages/Portfolio";
 import PortfolioStatistics from "./pages/PortfolioStatistics";
 import PortfolioInvestments from "./pages/PortfolioInvestments";
+import PortfolioContributions from "./pages/PortfolioContributions";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
