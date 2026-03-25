@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowLeft, Users, DollarSign, BarChart3, HelpCircle, Info } from "lucide-react";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 import BottomNav from "@/components/mobile/BottomNav";
 
 const tabs = [
@@ -16,7 +16,9 @@ type TabKey = (typeof tabs)[number]["key"];
 
 const Information = () => {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<TabKey>("about");
+  const [searchParams] = useSearchParams();
+  const tabParam = searchParams.get("tab") as TabKey | null;
+  const [activeTab, setActiveTab] = useState<TabKey>(tabParam && tabs.some(t => t.key === tabParam) ? tabParam : "about");
 
   return (
     <div className="min-h-screen bg-background pb-28">
