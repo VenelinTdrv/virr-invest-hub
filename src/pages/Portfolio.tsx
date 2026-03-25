@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Bell, Settings, BarChart3, Briefcase, Receipt } from "lucide-react";
+import { Bell, Settings, BarChart3, Briefcase, Euro } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import BottomNav from "@/components/mobile/BottomNav";
 
