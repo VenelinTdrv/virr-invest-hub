@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
+import Investments from "./pages/Investments";
 import PrimaryMarket from "./pages/PrimaryMarket";
 import Deposit from "./pages/Deposit";
 import Withdraw from "./pages/Withdraw";
@@ -20,6 +21,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/investments" element={<Investments />} />
           <Route path="/primary-market" element={<PrimaryMarket />} />
           <Route path="/deposit" element={<Deposit />} />
           <Route path="/withdraw" element={<Withdraw />} />

@@ -64,7 +64,7 @@ const PrimaryMarket = () => {
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <motion.button whileTap={{ scale: 0.9 }} onClick={() => navigate("/")}>
+            <motion.button whileTap={{ scale: 0.9 }} onClick={() => navigate("/investments")}>
               <ArrowLeft className="w-6 h-6" />
             </motion.button>
             <div>
