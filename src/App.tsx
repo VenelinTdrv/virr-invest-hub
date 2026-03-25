@@ -17,6 +17,7 @@ import PortfolioContributions from "./pages/PortfolioContributions";
 import Information from "./pages/Information";
 import More from "./pages/More";
 import Profile from "./pages/Profile";
+import ProfilePersonal from "./pages/ProfilePersonal";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
