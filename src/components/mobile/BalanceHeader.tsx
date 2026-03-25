@@ -20,7 +20,7 @@ const BalanceHeader = ({ balance, userName }: BalanceHeaderProps) => {
         <div className="flex items-center gap-3">
           <motion.button
             whileTap={{ scale: 0.95 }}
-            onClick={() => navigate("/information")}
+            onClick={() => navigate("/profile")}
             className="w-10 h-10 rounded-full bg-primary-foreground/20 flex items-center justify-center"
           >
             <span className="text-sm font-semibold">

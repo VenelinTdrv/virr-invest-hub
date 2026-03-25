@@ -16,6 +16,7 @@ import PortfolioInvestments from "./pages/PortfolioInvestments";
 import PortfolioContributions from "./pages/PortfolioContributions";
 import Information from "./pages/Information";
 import More from "./pages/More";
+import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -39,6 +40,7 @@ const App = () => (
           <Route path="/portfolio/investments" element={<PortfolioInvestments />} />
           <Route path="/portfolio/contributions" element={<PortfolioContributions />} />
           <Route path="/information" element={<Information />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/more" element={<More />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
