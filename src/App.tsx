@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import PrimaryMarket from "./pages/PrimaryMarket";
 import Deposit from "./pages/Deposit";
 import Withdraw from "./pages/Withdraw";
+import Transactions from "./pages/Transactions";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
