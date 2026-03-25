@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Home, TrendingUp, Wallet, ArrowDownUp, User } from "lucide-react";
+import { Home, TrendingUp, Wallet, ArrowDownUp, Upload } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const navItems = [
