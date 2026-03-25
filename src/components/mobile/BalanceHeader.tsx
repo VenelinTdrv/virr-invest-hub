@@ -8,6 +8,8 @@ interface BalanceHeaderProps {
 }
 
 const BalanceHeader = ({ balance, userName }: BalanceHeaderProps) => {
+  const navigate = useNavigate();
+
   return (
     <motion.div 
       initial={{ opacity: 0, y: -20 }}
@@ -16,11 +18,15 @@ const BalanceHeader = ({ balance, userName }: BalanceHeaderProps) => {
     >
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-primary-foreground/20 flex items-center justify-center">
+          <motion.button
+            whileTap={{ scale: 0.95 }}
+            onClick={() => navigate("/information")}
+            className="w-10 h-10 rounded-full bg-primary-foreground/20 flex items-center justify-center"
+          >
             <span className="text-sm font-semibold">
               {userName.charAt(0).toUpperCase()}
             </span>
-          </div>
+          </motion.button>
           <div>
             <p className="text-xs text-primary-foreground/70">Добре дошли</p>
             <p className="font-semibold">{userName}</p>
