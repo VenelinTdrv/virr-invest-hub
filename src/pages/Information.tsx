@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowLeft, Users, DollarSign, BarChart3, HelpCircle, Info } from "lucide-react";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 import BottomNav from "@/components/mobile/BottomNav";
 
 const tabs = [
