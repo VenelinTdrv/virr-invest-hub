@@ -20,6 +20,7 @@ import Profile from "./pages/Profile";
 import ProfilePersonal from "./pages/ProfilePersonal";
 import Security from "./pages/Security";
 import Settings from "./pages/Settings";
+import ReferFriend from "./pages/ReferFriend";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
