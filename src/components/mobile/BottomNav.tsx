@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Home, TrendingUp, Wallet, ArrowDownUp, PieChart } from "lucide-react";
+import { Home, TrendingUp, Wallet, PieChart, MoreHorizontal } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const navItems = [
@@ -7,7 +7,7 @@ const navItems = [
   { icon: TrendingUp, label: "Инвестиране", path: "/investments" },
   { icon: Wallet, label: "Трансфер", path: "/transfer" },
   { icon: PieChart, label: "Портфолио", path: "/portfolio" },
-  { icon: ArrowDownUp, label: "Транзакции", path: "/transactions" },
+  { icon: MoreHorizontal, label: "Повече", path: "/more" },
 ];
 
 const BottomNav = () => {
