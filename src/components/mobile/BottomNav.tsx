@@ -6,8 +6,8 @@ const navItems = [
   { icon: Home, label: "Начало", path: "/" },
   { icon: TrendingUp, label: "Инвестиране", path: "/primary-market" },
   { icon: Wallet, label: "Депозиране", path: "/deposit" },
+  { icon: Upload, label: "Теглене", path: "/withdraw" },
   { icon: ArrowDownUp, label: "Транзакции", path: "/transactions" },
-  { icon: User, label: "Профил", path: "/profile" },
 ];
 
 const BottomNav = () => {
