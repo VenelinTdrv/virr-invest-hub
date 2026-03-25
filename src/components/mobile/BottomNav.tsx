@@ -5,8 +5,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 const navItems = [
   { icon: Home, label: "Начало", path: "/" },
   { icon: TrendingUp, label: "Инвестиране", path: "/investments" },
-  { icon: PieChart, label: "Портфолио", path: "/portfolio" },
   { icon: Wallet, label: "Трансфер", path: "/transfer" },
+  { icon: PieChart, label: "Портфолио", path: "/portfolio" },
   { icon: ArrowDownUp, label: "Транзакции", path: "/transactions" },
 ];
 
