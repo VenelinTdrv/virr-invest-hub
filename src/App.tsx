@@ -8,6 +8,7 @@ import Investments from "./pages/Investments";
 import PrimaryMarket from "./pages/PrimaryMarket";
 import Deposit from "./pages/Deposit";
 import Withdraw from "./pages/Withdraw";
+import Transfer from "./pages/Transfer";
 import Transactions from "./pages/Transactions";
 import NotFound from "./pages/NotFound";
 
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/primary-market" element={<PrimaryMarket />} />
           <Route path="/deposit" element={<Deposit />} />
           <Route path="/withdraw" element={<Withdraw />} />
+          <Route path="/transfer" element={<Transfer />} />
           <Route path="/transactions" element={<Transactions />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
