@@ -19,6 +19,7 @@ import More from "./pages/More";
 import Profile from "./pages/Profile";
 import ProfilePersonal from "./pages/ProfilePersonal";
 import Security from "./pages/Security";
+import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
