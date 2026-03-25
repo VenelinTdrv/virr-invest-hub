@@ -17,7 +17,7 @@ const tiles = [
     color: "bg-secondary",
   },
   {
-    icon: Receipt,
+    icon: Euro,
     label: "Вноски",
     path: "/portfolio/contributions",
     color: "bg-accent",
