@@ -18,6 +18,7 @@ import Information from "./pages/Information";
 import More from "./pages/More";
 import Profile from "./pages/Profile";
 import ProfilePersonal from "./pages/ProfilePersonal";
+import Security from "./pages/Security";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -43,6 +44,7 @@ const App = () => (
           <Route path="/information" element={<Information />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile/personal" element={<ProfilePersonal />} />
+          <Route path="/profile/security" element={<Security />} />
           <Route path="/more" element={<More />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

@@ -41,7 +41,7 @@ const Profile = () => {
         {/* Функции */}
         <Section title="Функции">
           <MenuItem icon={User} label="Лична информация" onClick={() => navigate("/profile/personal")} />
-          <MenuItem icon={Shield} label="Сигурност" badge="2FA" onClick={() => {}} />
+          <MenuItem icon={Shield} label="Сигурност" badge="2FA" onClick={() => navigate("/profile/security")} />
         </Section>
 
         {/* Настройки */}
