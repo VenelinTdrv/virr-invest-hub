@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
-import { Home, TrendingUp, Wallet, ArrowDownUp, User } from "lucide-react";
+import { Home, TrendingUp, Wallet, ArrowDownUp, Upload } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const navItems = [
   { icon: Home, label: "Начало", path: "/" },
   { icon: TrendingUp, label: "Инвестиране", path: "/primary-market" },
   { icon: Wallet, label: "Депозиране", path: "/deposit" },
+  { icon: Upload, label: "Теглене", path: "/withdraw" },
   { icon: ArrowDownUp, label: "Транзакции", path: "/transactions" },
-  { icon: User, label: "Профил", path: "/profile" },
 ];
 
 const BottomNav = () => {
