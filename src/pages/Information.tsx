@@ -16,7 +16,9 @@ type TabKey = (typeof tabs)[number]["key"];
 
 const Information = () => {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<TabKey>("about");
+  const [searchParams] = useSearchParams();
+  const tabParam = searchParams.get("tab") as TabKey | null;
+  const [activeTab, setActiveTab] = useState<TabKey>(tabParam && tabs.some(t => t.key === tabParam) ? tabParam : "about");
 
   return (
     <div className="min-h-screen bg-background pb-28">
