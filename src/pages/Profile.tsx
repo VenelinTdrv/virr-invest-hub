@@ -46,7 +46,7 @@ const Profile = () => {
 
         {/* Настройки */}
         <Section title="Настройки">
-          <MenuItem icon={Settings} label="Настройки" onClick={() => {}} />
+          <MenuItem icon={Settings} label="Настройки" onClick={() => navigate("/profile/settings")} />
           <MenuItem icon={UserPlus} label="Препоръчай приятел" badge="Покани" onClick={() => {}} />
         </Section>
       </div>
