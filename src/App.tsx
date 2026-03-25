@@ -8,6 +8,7 @@ import Investments from "./pages/Investments";
 import PrimaryMarket from "./pages/PrimaryMarket";
 import Deposit from "./pages/Deposit";
 import Withdraw from "./pages/Withdraw";
+import Transfer from "./pages/Transfer";
 import Transactions from "./pages/Transactions";
 import NotFound from "./pages/NotFound";
 
