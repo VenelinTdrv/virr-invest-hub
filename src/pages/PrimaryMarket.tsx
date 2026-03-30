@@ -53,6 +53,7 @@ const loans = [
 
 const PrimaryMarket = () => {
   const [showFilters, setShowFilters] = useState(false);
+  const basketItems = useBasket();
   const navigate = useNavigate();
 
   return (
