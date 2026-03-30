@@ -26,6 +26,7 @@ import RegistrationSuccess from "./pages/RegistrationSuccess";
 import EmailConfirmed from "./pages/EmailConfirmed";
 import NotFound from "./pages/NotFound";
 import Notifications from "./pages/Notifications";
+import IdentityVerification from "./pages/IdentityVerification";
 
 const queryClient = new QueryClient();
 
