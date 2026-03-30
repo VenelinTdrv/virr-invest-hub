@@ -129,6 +129,60 @@ const LoanCard = ({ loan, delay = 0 }: LoanCardProps) => {
         </div>
       </div>
 
+      {/* Amount Input Panel */}
+      <AnimatePresence>
+        {showAmountInput && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="overflow-hidden border-t border-border"
+          >
+            <div className="px-4 py-3 bg-muted/30 space-y-2">
+              <label className="text-xs text-muted-foreground">
+                Сума за инвестиране (€) · макс. €{loan.investAmount.eur}
+              </label>
+              <div className="flex items-center gap-2">
+                <Input
+                  type="number"
+                  value={customAmount}
+                  onChange={(e) => setCustomAmount(e.target.value)}
+                  className="rounded-xl h-10 bg-card border-border flex-1"
+                  step="0.01"
+                  min="0"
+                />
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="rounded-xl text-xs h-10 px-3"
+                  onClick={() => setCustomAmount(loan.investAmount.eur)}
+                >
+                  Цялата
+                </Button>
+              </div>
+              <div className="flex gap-2">
+                <Button
+                  size="sm"
+                  className="rounded-xl flex-1 virr-gradient text-primary-foreground"
+                  onClick={handleAddToBasket}
+                >
+                  <ShoppingCart className="w-4 h-4 mr-1" />
+                  Добави
+                </Button>
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  className="rounded-xl"
+                  onClick={() => setShowAmountInput(false)}
+                >
+                  Отказ
+                </Button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Card Actions */}
       <div className="grid grid-cols-2 border-t border-border">
         <motion.button
