@@ -50,6 +50,7 @@ const App = () => (
           <Route path="/profile/security" element={<Security />} />
           <Route path="/profile/settings" element={<Settings />} />
           <Route path="/profile/refer" element={<ReferFriend />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/more" element={<More />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
