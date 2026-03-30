@@ -93,7 +93,8 @@ const PrimaryMarket = () => {
               className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center"
             >
               {showFilters ? <X className="w-5 h-5" /> : <SlidersHorizontal className="w-5 h-5" />}
-          </motion.button>
+            </motion.button>
+          </div>
         </div>
       </motion.div>
 
