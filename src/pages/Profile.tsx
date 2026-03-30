@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, User, Shield, Settings, UserPlus, ChevronRight } from "lucide-react";
+import { ArrowLeft, User, Shield, Settings, UserPlus, ChevronRight, LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
