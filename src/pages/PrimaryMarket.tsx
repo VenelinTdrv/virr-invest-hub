@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, SlidersHorizontal, X, Search, Info, ChevronDown, ShoppingCart } from "lucide-react";
 import { useState } from "react";
 import BottomNav from "@/components/mobile/BottomNav";
+import { useBasket } from "@/hooks/useBasket";
 import LoanCard from "@/components/mobile/LoanCard";
 import { useNavigate } from "react-router-dom";
 
