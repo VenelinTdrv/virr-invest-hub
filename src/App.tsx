@@ -27,6 +27,7 @@ import EmailConfirmed from "./pages/EmailConfirmed";
 import NotFound from "./pages/NotFound";
 import Notifications from "./pages/Notifications";
 import IdentityVerification from "./pages/IdentityVerification";
+import Welcome from "./pages/Welcome";
 
 const queryClient = new QueryClient();
 
