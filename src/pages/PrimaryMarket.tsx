@@ -74,12 +74,25 @@ const PrimaryMarket = () => {
               <p className="text-xs text-primary-foreground/70">Инвестиране</p>
             </div>
           </div>
-          <motion.button
-            whileTap={{ scale: 0.9 }}
-            onClick={() => setShowFilters(!showFilters)}
-            className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center"
-          >
-            {showFilters ? <X className="w-5 h-5" /> : <SlidersHorizontal className="w-5 h-5" />}
+          <div className="flex items-center gap-2">
+            <motion.button
+              whileTap={{ scale: 0.9 }}
+              onClick={() => navigate("/basket")}
+              className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center relative"
+            >
+              <ShoppingCart className="w-5 h-5" />
+              {basketItems.length > 0 && (
+                <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-destructive text-destructive-foreground text-[10px] font-bold flex items-center justify-center">
+                  {basketItems.length}
+                </span>
+              )}
+            </motion.button>
+            <motion.button
+              whileTap={{ scale: 0.9 }}
+              onClick={() => setShowFilters(!showFilters)}
+              className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center"
+            >
+              {showFilters ? <X className="w-5 h-5" /> : <SlidersHorizontal className="w-5 h-5" />}
           </motion.button>
         </div>
       </motion.div>
