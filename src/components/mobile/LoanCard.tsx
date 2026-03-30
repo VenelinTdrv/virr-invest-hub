@@ -1,8 +1,11 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Info, CheckCircle, ShoppingCart } from "lucide-react";
+import { useState } from "react";
 import { addToBasket } from "@/stores/basketStore";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 interface LoanData {
   id: number;
@@ -27,17 +30,30 @@ interface LoanCardProps {
 const LoanCard = ({ loan, delay = 0 }: LoanCardProps) => {
   const navigate = useNavigate();
 
+  const [showAmountInput, setShowAmountInput] = useState(false);
+  const [customAmount, setCustomAmount] = useState(loan.investAmount.eur);
+
   const handleInvest = () => {
+    setCustomAmount(loan.investAmount.eur);
+    setShowAmountInput(true);
+  };
+
+  const handleAddToBasket = () => {
+    const eurVal = parseFloat(customAmount.replace(",", "."));
+    const rate = parseFloat(loan.investAmount.bgn.replace(",", ".")) / parseFloat(loan.investAmount.eur.replace(",", "."));
+    const bgnVal = (eurVal * rate).toFixed(2);
+
     const added = addToBasket({
       loanId: loan.id,
       contractNo: loan.contractNo,
       originator: loan.originator,
-      investAmount: loan.investAmount,
+      investAmount: { eur: eurVal.toFixed(2), bgn: bgnVal },
       apr: loan.apr,
       remainingTerm: loan.remainingTerm,
       initialTerm: loan.initialTerm,
     });
     if (added) {
+      setShowAmountInput(false);
       toast.success("Кредитът е добавен в количката!", {
         action: {
           label: "Количка",
@@ -112,6 +128,60 @@ const LoanCard = ({ loan, delay = 0 }: LoanCardProps) => {
           </p>
         </div>
       </div>
+
+      {/* Amount Input Panel */}
+      <AnimatePresence>
+        {showAmountInput && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="overflow-hidden border-t border-border"
+          >
+            <div className="px-4 py-3 bg-muted/30 space-y-2">
+              <label className="text-xs text-muted-foreground">
+                Сума за инвестиране (€) · макс. €{loan.investAmount.eur}
+              </label>
+              <div className="flex items-center gap-2">
+                <Input
+                  type="number"
+                  value={customAmount}
+                  onChange={(e) => setCustomAmount(e.target.value)}
+                  className="rounded-xl h-10 bg-card border-border flex-1"
+                  step="0.01"
+                  min="0"
+                />
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="rounded-xl text-xs h-10 px-3"
+                  onClick={() => setCustomAmount(loan.investAmount.eur)}
+                >
+                  Цялата
+                </Button>
+              </div>
+              <div className="flex gap-2">
+                <Button
+                  size="sm"
+                  className="rounded-xl flex-1 virr-gradient text-primary-foreground"
+                  onClick={handleAddToBasket}
+                >
+                  <ShoppingCart className="w-4 h-4 mr-1" />
+                  Добави
+                </Button>
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  className="rounded-xl"
+                  onClick={() => setShowAmountInput(false)}
+                >
+                  Отказ
+                </Button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Card Actions */}
       <div className="grid grid-cols-2 border-t border-border">
