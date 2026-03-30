@@ -3,6 +3,12 @@ import { ArrowLeft, Users, DollarSign, BarChart3, HelpCircle, Info } from "lucid
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import BottomNav from "@/components/mobile/BottomNav";
+import blogP2pLending from "@/assets/blog-p2p-lending.jpg";
+import blogMarketReview from "@/assets/blog-market-review.jpg";
+import blogDiversification from "@/assets/blog-diversification.jpg";
+import blogP2pVsTraditional from "@/assets/blog-p2p-vs-traditional.jpg";
+import blog5Reasons from "@/assets/blog-5-reasons.jpg";
+import blogProfitablePortfolio from "@/assets/blog-profitable-portfolio.jpg";
 
 const tabs = [
   { key: "about", label: "За нас", icon: Users },
