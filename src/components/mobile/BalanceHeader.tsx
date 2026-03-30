@@ -10,6 +10,7 @@ interface BalanceHeaderProps {
 
 const BalanceHeader = ({ balance, userName }: BalanceHeaderProps) => {
   const navigate = useNavigate();
+  const { unreadCount } = useNotifications();
 
   return (
     <motion.div 
