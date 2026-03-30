@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Lock, Mail, Eye, EyeOff, UserPlus } from "lucide-react";
+import { Lock, Mail, Eye, EyeOff, User, Languages } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 
 const Login = () => {
@@ -14,7 +15,11 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [name, setName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [language, setLanguage] = useState("");
+  const [acceptTerms, setAcceptTerms] = useState(false);
+  const [acceptData, setAcceptData] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -90,31 +95,12 @@ const Login = () => {
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-3.5">
-            {!isLogin && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-              >
-                <div className="relative">
-                  <UserPlus className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                  <Input
-                    type="text"
-                    placeholder="Име и фамилия"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    className="pl-10 h-12 bg-accent/30 border-border rounded-xl text-sm"
-                    required={!isLogin}
-                  />
-                </div>
-              </motion.div>
-            )}
-
+            {/* Email - always shown */}
             <div className="relative">
               <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <Input
                 type="email"
-                placeholder="Имейл адрес"
+                placeholder="Email*"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="pl-10 h-12 bg-accent/30 border-border rounded-xl text-sm"
@@ -122,11 +108,12 @@ const Login = () => {
               />
             </div>
 
+            {/* Password - always shown */}
             <div className="relative">
               <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <Input
                 type={showPassword ? "text" : "password"}
-                placeholder="Парола"
+                placeholder="Парола*"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="pl-10 pr-10 h-12 bg-accent/30 border-border rounded-xl text-sm"
@@ -141,21 +128,91 @@ const Login = () => {
               </button>
             </div>
 
+            {/* Registration-only fields */}
             {!isLogin && (
               <motion.div
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
+                className="space-y-3.5"
               >
+                {/* Confirm password */}
                 <div className="relative">
                   <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                   <Input
                     type={showPassword ? "text" : "password"}
-                    placeholder="Потвърди парола"
+                    placeholder="Потвърди паролата*"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     className="pl-10 h-12 bg-accent/30 border-border rounded-xl text-sm"
-                    required={!isLogin}
+                    required
                   />
+                </div>
+
+                {/* First name */}
+                <div className="relative">
+                  <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                  <Input
+                    type="text"
+                    placeholder="Име*"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    className="pl-10 h-12 bg-accent/30 border-border rounded-xl text-sm"
+                    required
+                  />
+                </div>
+
+                {/* Last name */}
+                <div className="relative">
+                  <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                  <Input
+                    type="text"
+                    placeholder="Фамилия*"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                    className="pl-10 h-12 bg-accent/30 border-border rounded-xl text-sm"
+                    required
+                  />
+                </div>
+
+                {/* Language select */}
+                <div className="relative">
+                  <Languages className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                  <select
+                    value={language}
+                    onChange={(e) => setLanguage(e.target.value)}
+                    required
+                    className="w-full h-12 pl-10 pr-4 bg-accent/30 border border-border rounded-xl text-sm text-foreground appearance-none focus:outline-none focus:ring-2 focus:ring-ring"
+                  >
+                    <option value="" disabled>Език за контакт*</option>
+                    <option value="bg">Български</option>
+                    <option value="en">English</option>
+                  </select>
+                  <svg className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m6 9 6 6 6-6"/></svg>
+                </div>
+
+                {/* Checkboxes */}
+                <div className="space-y-3 pt-1">
+                  <label className="flex items-start gap-2.5 cursor-pointer">
+                    <Checkbox
+                      checked={acceptTerms}
+                      onCheckedChange={(v) => setAcceptTerms(v === true)}
+                      className="mt-0.5"
+                    />
+                    <span className="text-xs text-muted-foreground leading-relaxed">
+                      Запознат съм и приемам{" "}
+                      <a href="#" className="text-primary underline">Общите условия</a>
+                    </span>
+                  </label>
+                  <label className="flex items-start gap-2.5 cursor-pointer">
+                    <Checkbox
+                      checked={acceptData}
+                      onCheckedChange={(v) => setAcceptData(v === true)}
+                      className="mt-0.5"
+                    />
+                    <span className="text-xs text-muted-foreground leading-relaxed">
+                      Потвърждавам, че съм съгласен да предоставя личните си данни
+                    </span>
+                  </label>
                 </div>
               </motion.div>
             )}
@@ -164,7 +221,7 @@ const Login = () => {
               type="submit"
               className="w-full h-12 rounded-xl text-sm font-bold tracking-wide uppercase bg-primary text-primary-foreground hover:bg-primary/90"
             >
-              {isLogin ? "ВХОД" : "РЕГИСТРАЦИЯ"}
+              {isLogin ? "ВХОД" : "РЕГИСТРИРАЙ СЕ"}
             </Button>
           </form>
 
