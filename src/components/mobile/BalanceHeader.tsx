@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Bell, Settings } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useNotifications } from "@/hooks/useNotifications";
 
 interface BalanceHeaderProps {
   balance: string;
