@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, SlidersHorizontal, X, Search, Info, ChevronDown } from "lucide-react";
+import { ArrowLeft, SlidersHorizontal, X, Search, Info, ChevronDown, ShoppingCart } from "lucide-react";
 import { useState } from "react";
 import BottomNav from "@/components/mobile/BottomNav";
 import LoanCard from "@/components/mobile/LoanCard";
