@@ -49,6 +49,11 @@ const Profile = () => {
           <MenuItem icon={Settings} label="Настройки" onClick={() => navigate("/profile/settings")} />
           <MenuItem icon={UserPlus} label="Препоръчай приятел" badge="Покани" onClick={() => navigate("/profile/refer")} />
         </Section>
+
+        {/* Изход */}
+        <Section title="Акаунт">
+          <MenuItem icon={LogOut} label="Изход" onClick={() => navigate("/login")} />
+        </Section>
       </div>
     </div>
   );
