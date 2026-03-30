@@ -1,5 +1,10 @@
 import { motion } from "framer-motion";
 import { Info, CheckCircle } from "lucide-react";
+import { useState } from "react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 interface LoanData {
   id: number;
