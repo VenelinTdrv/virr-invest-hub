@@ -27,8 +27,12 @@ const Login = () => {
       toast({ title: "Грешка", description: "Паролите не съвпадат", variant: "destructive" });
       return;
     }
-    toast({ title: isLogin ? "Вход" : "Регистрация", description: "Успешно!" });
-    navigate("/");
+    if (isLogin) {
+      toast({ title: "Вход", description: "Успешно!" });
+      navigate("/");
+    } else {
+      navigate("/registration-success");
+    }
   };
 
   const handleSocialLogin = (provider: string) => {

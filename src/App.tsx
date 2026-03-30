@@ -22,6 +22,7 @@ import Security from "./pages/Security";
 import Settings from "./pages/Settings";
 import ReferFriend from "./pages/ReferFriend";
 import Login from "./pages/Login";
+import RegistrationSuccess from "./pages/RegistrationSuccess";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
