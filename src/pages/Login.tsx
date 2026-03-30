@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Lock, Mail, Eye, EyeOff, UserPlus } from "lucide-react";
+import { Lock, Mail, Eye, EyeOff, User, Languages } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 
 const Login = () => {
@@ -14,7 +15,11 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [name, setName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [language, setLanguage] = useState("");
+  const [acceptTerms, setAcceptTerms] = useState(false);
+  const [acceptData, setAcceptData] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
