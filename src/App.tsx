@@ -28,6 +28,7 @@ import NotFound from "./pages/NotFound";
 import Notifications from "./pages/Notifications";
 import IdentityVerification from "./pages/IdentityVerification";
 import Welcome from "./pages/Welcome";
+import Basket from "./pages/Basket";
 
 const queryClient = new QueryClient();
 
@@ -62,6 +63,7 @@ const App = () => (
           <Route path="/email-confirmed" element={<EmailConfirmed />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/more" element={<More />} />
+          <Route path="/basket" element={<Basket />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
