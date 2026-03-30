@@ -23,6 +23,7 @@ import Settings from "./pages/Settings";
 import ReferFriend from "./pages/ReferFriend";
 import Login from "./pages/Login";
 import RegistrationSuccess from "./pages/RegistrationSuccess";
+import EmailConfirmed from "./pages/EmailConfirmed";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -53,6 +54,7 @@ const App = () => (
           <Route path="/profile/refer" element={<ReferFriend />} />
           <Route path="/login" element={<Login />} />
           <Route path="/registration-success" element={<RegistrationSuccess />} />
+          <Route path="/email-confirmed" element={<EmailConfirmed />} />
           <Route path="/more" element={<More />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
