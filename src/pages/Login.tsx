@@ -32,6 +32,11 @@ const Login = () => {
       toast({ title: "Вход", description: "Успешно!" });
       navigate("/");
     } else {
+      notificationStore.addNotification({
+        message: "За да може да инвестирате в платформата е нужно да се идентифицирате. За целта попълнете вашите лични данни и прикачете копие на личната ви карта тук.",
+        linkText: "тук",
+        linkTo: "/profile/personal",
+      });
       navigate("/registration-success");
     }
   };
