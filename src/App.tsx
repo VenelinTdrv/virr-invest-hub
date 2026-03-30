@@ -54,6 +54,7 @@ const App = () => (
           <Route path="/profile/security" element={<Security />} />
           <Route path="/profile/settings" element={<Settings />} />
           <Route path="/profile/refer" element={<ReferFriend />} />
+          <Route path="/identity-verification" element={<IdentityVerification />} />
           <Route path="/login" element={<Login />} />
           <Route path="/registration-success" element={<RegistrationSuccess />} />
           <Route path="/email-confirmed" element={<EmailConfirmed />} />
