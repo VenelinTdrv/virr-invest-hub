@@ -37,9 +37,15 @@ const BalanceHeader = ({ balance, userName }: BalanceHeaderProps) => {
         <div className="flex items-center gap-2">
           <motion.button 
             whileTap={{ scale: 0.95 }}
-            className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center"
+            onClick={() => navigate("/notifications")}
+            className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center relative"
           >
             <Bell className="w-5 h-5" />
+            {unreadCount > 0 && (
+              <span className="absolute -top-0.5 -right-0.5 w-5 h-5 bg-destructive rounded-full flex items-center justify-center text-[10px] font-bold text-destructive-foreground">
+                {unreadCount}
+              </span>
+            )}
           </motion.button>
           <motion.button 
             whileTap={{ scale: 0.95 }}
