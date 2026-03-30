@@ -27,6 +27,7 @@ import EmailConfirmed from "./pages/EmailConfirmed";
 import NotFound from "./pages/NotFound";
 import Notifications from "./pages/Notifications";
 import IdentityVerification from "./pages/IdentityVerification";
+import Welcome from "./pages/Welcome";
 
 const queryClient = new QueryClient();
 
@@ -55,6 +56,7 @@ const App = () => (
           <Route path="/profile/settings" element={<Settings />} />
           <Route path="/profile/refer" element={<ReferFriend />} />
           <Route path="/identity-verification" element={<IdentityVerification />} />
+          <Route path="/welcome" element={<Welcome />} />
           <Route path="/login" element={<Login />} />
           <Route path="/registration-success" element={<RegistrationSuccess />} />
           <Route path="/email-confirmed" element={<EmailConfirmed />} />
