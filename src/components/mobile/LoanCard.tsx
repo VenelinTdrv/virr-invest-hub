@@ -1,8 +1,11 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Info, CheckCircle, ShoppingCart } from "lucide-react";
+import { useState } from "react";
 import { addToBasket } from "@/stores/basketStore";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 interface LoanData {
   id: number;
