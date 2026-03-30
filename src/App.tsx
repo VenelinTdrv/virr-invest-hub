@@ -28,6 +28,7 @@ import NotFound from "./pages/NotFound";
 import Notifications from "./pages/Notifications";
 import IdentityVerification from "./pages/IdentityVerification";
 import Welcome from "./pages/Welcome";
+import Basket from "./pages/Basket";
 
 const queryClient = new QueryClient();
 
