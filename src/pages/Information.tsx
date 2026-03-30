@@ -198,19 +198,69 @@ const FaqContent = () => (
   </div>
 );
 
+const blogPosts = [
+  {
+    title: "What is P2P Lending and How Does It Work?",
+    excerpt: "In a world of rising inflation and low bank deposit interest rates, more and more people are looking for new ways to grow their savings...",
+    image: blogP2pLending,
+  },
+  {
+    title: "P2P Lending vs Traditional Investments: What Are the Differences?",
+    excerpt: "In recent years, P2P lending has established itself as one of the most interesting alternatives for investors seeking higher returns...",
+    image: blogP2pVsTraditional,
+  },
+  {
+    title: "5 Reasons to Start Investing in P2P Platforms Today",
+    excerpt: "In the past 10 years, investing in P2P platforms has become one of the most popular alternatives for investors...",
+    image: blog5Reasons,
+  },
+  {
+    title: "How to Build a Profitable P2P Investment Portfolio?",
+    excerpt: "Investing in P2P loans is an effective way to achieve higher returns than traditional savings products. However, building a profitable portfolio requires a clear strategy...",
+    image: blogProfitablePortfolio,
+  },
+  {
+    title: "Как да започнете с P2P инвестиране",
+    excerpt: "Пълно ръководство за начинаещи инвеститори в P2P платформи.",
+    image: blogP2pLending,
+  },
+  {
+    title: "Пазарен обзор Q1 2026",
+    excerpt: "Анализ на тенденциите в P2P сектора през първото тримесечие.",
+    image: blogMarketReview,
+  },
+  {
+    title: "Диверсификация на портфолиото",
+    excerpt: "Стратегии за разпределение на риска при P2P инвестиции.",
+    image: blogDiversification,
+  },
+];
+
 const BlogContent = () => (
-  <div className="space-y-3">
+  <div className="space-y-4">
     <h2 className="text-lg font-bold text-foreground">Блог</h2>
-    {[
-      { title: "Как да започнете с P2P инвестиране", date: "15.03.2026", excerpt: "Пълно ръководство за начинаещи инвеститори в P2P платформи." },
-      { title: "Пазарен обзор Q1 2026", date: "01.03.2026", excerpt: "Анализ на тенденциите в P2P сектора през първото тримесечие." },
-      { title: "Диверсификация на портфолиото", date: "18.02.2026", excerpt: "Стратегии за разпределение на риска при P2P инвестиции." },
-    ].map((post) => (
-      <div key={post.title} className="bg-accent/50 rounded-xl p-3">
-        <p className="text-xs font-semibold text-foreground">{post.title}</p>
-        <p className="text-[10px] text-muted-foreground mt-0.5">{post.date}</p>
-        <p className="text-[11px] text-muted-foreground mt-1">{post.excerpt}</p>
-      </div>
+    {blogPosts.map((post, i) => (
+      <motion.div
+        key={i}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: i * 0.05 }}
+        className="bg-card rounded-2xl overflow-hidden border border-border shadow-sm"
+      >
+        <img
+          src={post.image}
+          alt={post.title}
+          loading="lazy"
+          width={800}
+          height={512}
+          className="w-full h-36 object-cover"
+        />
+        <div className="p-4">
+          <h3 className="text-sm font-semibold text-foreground leading-snug">{post.title}</h3>
+          <p className="text-[11px] text-muted-foreground mt-1.5 leading-relaxed line-clamp-2">{post.excerpt}</p>
+          <button className="text-xs font-semibold text-primary mt-2">Read more</button>
+        </div>
+      </motion.div>
     ))}
   </div>
 );
