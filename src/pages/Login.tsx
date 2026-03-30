@@ -35,7 +35,7 @@ const Login = () => {
       notificationStore.addNotification({
         message: "За да може да инвестирате в платформата е нужно да се идентифицирате. За целта попълнете вашите лични данни и прикачете копие на личната ви карта тук.",
         linkText: "тук",
-        linkTo: "/profile/personal",
+        linkTo: "/identity-verification",
       });
       navigate("/registration-success");
     }
