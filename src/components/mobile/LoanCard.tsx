@@ -30,17 +30,30 @@ interface LoanCardProps {
 const LoanCard = ({ loan, delay = 0 }: LoanCardProps) => {
   const navigate = useNavigate();
 
+  const [showAmountInput, setShowAmountInput] = useState(false);
+  const [customAmount, setCustomAmount] = useState(loan.investAmount.eur);
+
   const handleInvest = () => {
+    setCustomAmount(loan.investAmount.eur);
+    setShowAmountInput(true);
+  };
+
+  const handleAddToBasket = () => {
+    const eurVal = parseFloat(customAmount.replace(",", "."));
+    const rate = parseFloat(loan.investAmount.bgn.replace(",", ".")) / parseFloat(loan.investAmount.eur.replace(",", "."));
+    const bgnVal = (eurVal * rate).toFixed(2);
+
     const added = addToBasket({
       loanId: loan.id,
       contractNo: loan.contractNo,
       originator: loan.originator,
-      investAmount: loan.investAmount,
+      investAmount: { eur: eurVal.toFixed(2), bgn: bgnVal },
       apr: loan.apr,
       remainingTerm: loan.remainingTerm,
       initialTerm: loan.initialTerm,
     });
     if (added) {
+      setShowAmountInput(false);
       toast.success("Кредитът е добавен в количката!", {
         action: {
           label: "Количка",
