@@ -21,6 +21,7 @@ import ProfilePersonal from "./pages/ProfilePersonal";
 import Security from "./pages/Security";
 import Settings from "./pages/Settings";
 import ReferFriend from "./pages/ReferFriend";
+import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
