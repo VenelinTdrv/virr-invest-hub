@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
+import { notificationStore } from "@/stores/notificationStore";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -31,6 +32,11 @@ const Login = () => {
       toast({ title: "Вход", description: "Успешно!" });
       navigate("/");
     } else {
+      notificationStore.addNotification({
+        message: "За да може да инвестирате в платформата е нужно да се идентифицирате. За целта попълнете вашите лични данни и прикачете копие на личната ви карта тук.",
+        linkText: "тук",
+        linkTo: "/profile/personal",
+      });
       navigate("/registration-success");
     }
   };

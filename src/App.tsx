@@ -25,6 +25,7 @@ import Login from "./pages/Login";
 import RegistrationSuccess from "./pages/RegistrationSuccess";
 import EmailConfirmed from "./pages/EmailConfirmed";
 import NotFound from "./pages/NotFound";
+import Notifications from "./pages/Notifications";
 
 const queryClient = new QueryClient();
 
@@ -55,6 +56,7 @@ const App = () => (
           <Route path="/login" element={<Login />} />
           <Route path="/registration-success" element={<RegistrationSuccess />} />
           <Route path="/email-confirmed" element={<EmailConfirmed />} />
+          <Route path="/notifications" element={<Notifications />} />
           <Route path="/more" element={<More />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
