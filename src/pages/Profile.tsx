@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, User, Shield, Settings, UserPlus, ChevronRight } from "lucide-react";
+import { ArrowLeft, User, Shield, Settings, UserPlus, ChevronRight, LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
@@ -48,6 +48,11 @@ const Profile = () => {
         <Section title="Настройки">
           <MenuItem icon={Settings} label="Настройки" onClick={() => navigate("/profile/settings")} />
           <MenuItem icon={UserPlus} label="Препоръчай приятел" badge="Покани" onClick={() => navigate("/profile/refer")} />
+        </Section>
+
+        {/* Изход */}
+        <Section title="Акаунт">
+          <MenuItem icon={LogOut} label="Изход" onClick={() => navigate("/login")} />
         </Section>
       </div>
     </div>
