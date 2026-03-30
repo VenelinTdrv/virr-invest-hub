@@ -63,6 +63,7 @@ const App = () => (
           <Route path="/email-confirmed" element={<EmailConfirmed />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/more" element={<More />} />
+          <Route path="/basket" element={<Basket />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
