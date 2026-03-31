@@ -1,5 +1,7 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, User, Shield, Settings, UserPlus, ChevronRight, LogOut } from "lucide-react";
+import { ArrowLeft, User, Shield, Settings, UserPlus, ChevronRight, LogOut, Sun, Moon } from "lucide-react";
+import { Switch } from "@/components/ui/switch";
 import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
@@ -46,6 +48,7 @@ const Profile = () => {
 
         {/* Настройки */}
         <Section title="Настройки">
+          <ThemeToggle />
           <MenuItem icon={Settings} label="Настройки" onClick={() => navigate("/profile/settings")} />
           <MenuItem icon={UserPlus} label="Препоръчай приятел" badge="Покани" onClick={() => navigate("/profile/refer")} />
         </Section>
@@ -88,5 +91,31 @@ const MenuItem = ({ icon: Icon, label, badge, onClick }: { icon: any; label: str
     </div>
   </motion.button>
 );
+
+const ThemeToggle = () => {
+  const [isDark, setIsDark] = useState(() => document.documentElement.classList.contains("dark"));
+
+  useEffect(() => {
+    if (isDark) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [isDark]);
+
+  return (
+    <div className="flex items-center justify-between px-4 py-4 w-full">
+      <div className="flex items-center gap-3">
+        <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center">
+          {isDark ? <Moon className="w-5 h-5 text-muted-foreground" /> : <Sun className="w-5 h-5 text-muted-foreground" />}
+        </div>
+        <span className="text-sm font-medium text-foreground">Тъмна тема</span>
+      </div>
+      <Switch checked={isDark} onCheckedChange={setIsDark} />
+    </div>
+  );
+};
 
 export default Profile;
