@@ -1,5 +1,7 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, User, Shield, Settings, UserPlus, ChevronRight, LogOut } from "lucide-react";
+import { ArrowLeft, User, Shield, Settings, UserPlus, ChevronRight, LogOut, Sun, Moon } from "lucide-react";
+import { Switch } from "@/components/ui/switch";
 import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
