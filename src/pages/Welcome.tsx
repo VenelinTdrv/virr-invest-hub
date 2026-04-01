@@ -1,6 +1,8 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { ChevronDown, Globe } from "lucide-react";
 
 const Welcome = () => {
   const navigate = useNavigate();
