@@ -6,6 +6,13 @@ import { ChevronDown, Globe } from "lucide-react";
 
 const Welcome = () => {
   const navigate = useNavigate();
+  const [lang, setLang] = useState("BG");
+  const [showLangMenu, setShowLangMenu] = useState(false);
+
+  const languages = [
+    { code: "BG", label: "Български" },
+    { code: "EN", label: "English" },
+  ];
 
   return (
     <div className="min-h-screen bg-background flex flex-col items-center justify-center px-6">
