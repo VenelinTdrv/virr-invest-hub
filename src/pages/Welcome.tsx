@@ -23,6 +23,48 @@ const Welcome = () => {
         <div className="absolute bottom-20 right-10 w-32 h-32 rounded-full bg-primary/5" />
       </div>
 
+      {/* Language selector */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3 }}
+        className="absolute top-5 right-5 z-20"
+      >
+        <button
+          onClick={() => setShowLangMenu(!showLangMenu)}
+          className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-card/80 backdrop-blur-sm border border-border shadow-sm hover:shadow-md transition-all"
+        >
+          <Globe className="w-3.5 h-3.5 text-muted-foreground" />
+          <span className="text-sm font-semibold text-foreground">{lang}</span>
+          <ChevronDown className={`w-3.5 h-3.5 text-muted-foreground transition-transform ${showLangMenu ? "rotate-180" : ""}`} />
+        </button>
+        <AnimatePresence>
+          {showLangMenu && (
+            <motion.div
+              initial={{ opacity: 0, y: -4, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -4, scale: 0.95 }}
+              transition={{ duration: 0.15 }}
+              className="absolute right-0 mt-1.5 bg-card border border-border rounded-xl shadow-lg overflow-hidden min-w-[140px]"
+            >
+              {languages.map((l) => (
+                <button
+                  key={l.code}
+                  onClick={() => { setLang(l.code); setShowLangMenu(false); }}
+                  className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${
+                    lang === l.code
+                      ? "bg-primary/10 text-primary font-semibold"
+                      : "text-foreground hover:bg-muted"
+                  }`}
+                >
+                  {l.label}
+                </button>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
+
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center w-full max-w-sm">
         {/* Logo */}
