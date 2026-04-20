@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Bell, Settings, TrendingUp, ArrowLeftRight, Zap, PieChart } from "lucide-react";
+import { Bell, Settings, TrendingUp, ArrowLeftRight, Zap, PieChart, Coins } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import BottomNav from "@/components/mobile/BottomNav";
 
@@ -29,6 +29,13 @@ const tiles = [
     path: "/portfolio",
     color: "bg-accent",
     iconColor: "text-accent-foreground",
+  },
+  {
+    icon: Coins,
+    label: "Злато",
+    path: "/gold",
+    color: "bg-gradient-to-br from-amber-400 to-yellow-600",
+    iconColor: "text-amber-950",
   },
 ];
 
@@ -71,7 +78,7 @@ const Investments = () => {
           className="bg-card rounded-2xl p-5 virr-card-shadow border border-border"
         >
           <span className="text-sm text-muted-foreground font-medium">Продукти</span>
-          <div className="grid grid-cols-4 gap-3 mt-4">
+          <div className="grid grid-cols-4 gap-3 mt-4 gap-y-5">
             {tiles.map((tile, index) => (
               <motion.button
                 key={tile.label}
