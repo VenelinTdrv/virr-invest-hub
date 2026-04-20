@@ -1,5 +1,5 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, SlidersHorizontal, X, ShoppingCart, Minus, Plus, Coins, CheckCircle2, Clock, ArrowUpDown, ChevronDown } from "lucide-react";
+import { motion } from "framer-motion";
+import { ArrowLeft, ShoppingCart, Minus, Plus, Coins, CheckCircle2, Clock, TrendingUp, Sparkles } from "lucide-react";
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
@@ -70,28 +70,24 @@ const products: GoldProduct[] = [
 const formatMoney = (n: number) =>
   n.toLocaleString("bg-BG", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
+const TYPE_FILTERS = ["all", "Монета", "Кюлче", "Абонамент"] as const;
+
 const Gold = () => {
   const navigate = useNavigate();
-  const [showFilters, setShowFilters] = useState(false);
-  const [sort, setSort] = useState<"default" | "asc" | "desc">("default");
-  const [typeFilter, setTypeFilter] = useState<"all" | GoldProduct["type"]>("all");
+  const [typeFilter, setTypeFilter] = useState<(typeof TYPE_FILTERS)[number]>("all");
   const [quantities, setQuantities] = useState<Record<number, number>>({});
 
   const getQty = (id: number) => quantities[id] ?? 1;
   const setQty = (id: number, q: number) =>
     setQuantities((prev) => ({ ...prev, [id]: Math.max(1, q) }));
 
-  const filtered = useMemo(() => {
-    let list = [...products];
-    if (typeFilter !== "all") list = list.filter((p) => p.type === typeFilter);
-    if (sort === "asc") list.sort((a, b) => a.sell.eur - b.sell.eur);
-    if (sort === "desc") list.sort((a, b) => b.sell.eur - a.sell.eur);
-    return list;
-  }, [sort, typeFilter]);
+  const filtered = useMemo(
+    () => (typeFilter === "all" ? products : products.filter((p) => p.type === typeFilter)),
+    [typeFilter],
+  );
 
   const handleBuy = (p: GoldProduct) => {
-    const qty = getQty(p.id);
-    toast.success(`Добавено в количка: ${qty}× ${p.name}`);
+    toast.success(`Добавено в количка: ${getQty(p.id)}× ${p.name}`);
   };
 
   return (
@@ -100,7 +96,7 @@ const Gold = () => {
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="virr-gradient px-5 pt-12 pb-6 text-primary-foreground relative z-30"
+        className="virr-gradient px-5 pt-12 pb-8 text-primary-foreground relative z-30 rounded-b-[28px]"
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -115,104 +111,65 @@ const Gold = () => {
               <p className="text-xs text-primary-foreground/70">Монети, кюлчета, абонаменти</p>
             </div>
           </div>
-          <div className="flex items-center gap-2">
-            <motion.button
-              whileTap={{ scale: 0.9 }}
-              onClick={() => navigate("/basket")}
-              className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center"
-            >
-              <ShoppingCart className="w-5 h-5" />
-            </motion.button>
-            <motion.button
-              whileTap={{ scale: 0.9 }}
-              onClick={() => setShowFilters(!showFilters)}
-              className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center"
-            >
-              {showFilters ? <X className="w-5 h-5" /> : <SlidersHorizontal className="w-5 h-5" />}
-            </motion.button>
-          </div>
+          <motion.button
+            whileTap={{ scale: 0.9 }}
+            onClick={() => navigate("/basket")}
+            className="w-10 h-10 rounded-full bg-primary-foreground/15 flex items-center justify-center"
+          >
+            <ShoppingCart className="w-5 h-5" />
+          </motion.button>
         </div>
 
-        {/* Live price strip */}
+        {/* Premium spot price card */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.15 }}
-          className="mt-5 bg-primary-foreground/10 backdrop-blur-sm rounded-2xl p-3 flex items-center justify-between"
+          className="mt-6 relative overflow-hidden rounded-2xl p-4 bg-gradient-to-br from-amber-400/25 via-yellow-300/10 to-transparent border border-amber-200/30 backdrop-blur-sm"
         >
-          <div>
-            <p className="text-[11px] text-primary-foreground/70">Спот цена злато (1 oz)</p>
-            <p className="text-base font-bold mt-0.5">€2 489,30 / 4 869,12 лв.</p>
-          </div>
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-100 text-[11px] font-semibold">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse" />
-            Обновено
+          <div className="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-amber-300/20 blur-2xl" />
+          <div className="relative flex items-center justify-between">
+            <div>
+              <div className="flex items-center gap-1.5 text-[10px] text-primary-foreground/70 uppercase tracking-wider font-semibold">
+                <Sparkles className="w-3 h-3 text-amber-200" />
+                Спот цена злато · 1 oz
+              </div>
+              <p className="text-xl font-bold mt-1.5 tracking-tight">€2 489,30</p>
+              <p className="text-[11px] text-primary-foreground/60 mt-0.5">4 869,12 лв.</p>
+            </div>
+            <div className="flex flex-col items-end gap-1.5">
+              <div className="flex items-center gap-1 px-2 py-1 rounded-full bg-emerald-400/25 text-emerald-50 text-[11px] font-semibold">
+                <TrendingUp className="w-3 h-3" />
+                +1,24%
+              </div>
+              <span className="text-[10px] text-primary-foreground/60">днес</span>
+            </div>
           </div>
         </motion.div>
       </motion.div>
 
-      {/* Filters Panel */}
-      <AnimatePresence>
-        {showFilters && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="overflow-hidden bg-card border-b border-border"
-          >
-            <div className="px-4 py-4 space-y-3">
-              <div>
-                <p className="text-[11px] text-muted-foreground mb-2 font-medium">Тип продукт</p>
-                <div className="flex gap-2 flex-wrap">
-                  {(["all", "Монета", "Кюлче", "Абонамент"] as const).map((t) => (
-                    <button
-                      key={t}
-                      onClick={() => setTypeFilter(t)}
-                      className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${
-                        typeFilter === t
-                          ? "bg-primary text-primary-foreground border-primary"
-                          : "bg-background text-foreground border-border"
-                      }`}
-                    >
-                      {t === "all" ? "Всички" : t}
-                    </button>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <p className="text-[11px] text-muted-foreground mb-2 font-medium">Подредба</p>
-                <div className="relative">
-                  <select
-                    value={sort}
-                    onChange={(e) => setSort(e.target.value as typeof sort)}
-                    className="w-full bg-background border border-border rounded-xl px-3 py-2.5 text-sm text-foreground appearance-none pr-8"
-                  >
-                    <option value="default">По подразбиране</option>
-                    <option value="asc">Цена: ниска → висока</option>
-                    <option value="desc">Цена: висока → ниска</option>
-                  </select>
-                  <ChevronDown className="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none" />
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Quick filter chips */}
-      <div className="px-4 mt-4 flex items-center justify-between">
-        <span className="text-xs text-muted-foreground">{filtered.length} продукта</span>
-        <button
-          onClick={() => setSort(sort === "asc" ? "desc" : "asc")}
-          className="flex items-center gap-1 text-xs text-primary font-medium"
-        >
-          <ArrowUpDown className="w-3.5 h-3.5" />
-          Подредба
-        </button>
+      {/* Type filter chips */}
+      <div className="px-4 mt-5">
+        <div className="flex gap-2 overflow-x-auto scrollbar-hide -mx-1 px-1 pb-1">
+          {TYPE_FILTERS.map((t) => (
+            <button
+              key={t}
+              onClick={() => setTypeFilter(t)}
+              className={`shrink-0 px-4 py-2 rounded-full text-xs font-semibold border transition-all ${
+                typeFilter === t
+                  ? "bg-foreground text-background border-foreground shadow-sm"
+                  : "bg-card text-muted-foreground border-border hover:border-foreground/30"
+              }`}
+            >
+              {t === "all" ? "Всички" : t}
+            </button>
+          ))}
+        </div>
+        <p className="text-[11px] text-muted-foreground mt-3 px-1">{filtered.length} продукта</p>
       </div>
 
       {/* Product Cards */}
-      <div className="px-4 mt-3 space-y-3">
+      <div className="px-4 mt-2 space-y-3">
         {filtered.map((p, index) => {
           const qty = getQty(p.id);
           return (
@@ -220,97 +177,102 @@ const Gold = () => {
               key={p.id}
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.06 }}
-              className="bg-card rounded-2xl border border-border overflow-hidden virr-card-shadow"
+              transition={{ delay: index * 0.05 }}
+              className="bg-card rounded-3xl border border-border overflow-hidden virr-card-shadow"
             >
-              {/* Top: gold visual + badges */}
-              <div className="relative bg-gradient-to-br from-amber-100 via-yellow-50 to-amber-200 dark:from-amber-900/30 dark:via-yellow-900/20 dark:to-amber-800/30 p-5 flex items-center justify-between">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-300 to-yellow-600 shadow-lg flex items-center justify-center">
-                  <Coins className="w-8 h-8 text-amber-900" />
-                </div>
-                <div className="flex flex-col items-end gap-1.5">
-                  {p.isNew && (
-                    <span className="px-2.5 py-1 rounded-full bg-primary text-primary-foreground text-[10px] font-bold tracking-wide">
-                      НОВО
-                    </span>
-                  )}
-                  <span className="px-2 py-0.5 rounded-full bg-background/70 backdrop-blur-sm text-foreground text-[10px] font-medium border border-border">
-                    {p.type} · {p.weight}
-                  </span>
-                  {p.inStock ? (
-                    <span className="flex items-center gap-1 text-[10px] text-emerald-600 dark:text-emerald-400 font-medium">
-                      <CheckCircle2 className="w-3 h-3" />
-                      В наличност
-                    </span>
-                  ) : (
-                    <span className="flex items-center gap-1 text-[10px] text-amber-600 dark:text-amber-400 font-medium">
-                      <Clock className="w-3 h-3" />
-                      {p.delivery}
-                    </span>
-                  )}
-                </div>
-              </div>
-
-              {/* Body */}
               <div className="p-4">
-                <h3 className="text-sm font-semibold text-foreground leading-snug">{p.name}</h3>
+                {/* Top: medallion + info */}
+                <div className="flex items-start gap-4">
+                  <div className="relative shrink-0">
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-amber-300 to-amber-600 blur-md opacity-40" />
+                    <div className="relative w-20 h-20 rounded-full bg-gradient-to-br from-amber-200 via-yellow-400 to-amber-700 shadow-lg flex items-center justify-center ring-4 ring-amber-100/40 dark:ring-amber-900/30">
+                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-300 to-yellow-600 flex items-center justify-center">
+                        <Coins className="w-7 h-7 text-amber-950" />
+                      </div>
+                    </div>
+                  </div>
 
-                {/* Prices */}
-                <div className="mt-3 grid grid-cols-2 gap-3">
-                  <div className="bg-background rounded-xl p-3 border border-border">
-                    <p className="text-[10px] text-muted-foreground font-medium uppercase tracking-wide">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                      <span className="px-2 py-0.5 rounded-full bg-muted text-muted-foreground text-[10px] font-semibold">
+                        {p.type}
+                      </span>
+                      <span className="text-[10px] text-muted-foreground font-medium">
+                        · {p.weight}
+                      </span>
+                      {p.isNew && (
+                        <span className="px-2 py-0.5 rounded-full bg-primary text-primary-foreground text-[9px] font-bold tracking-wider">
+                          НОВО
+                        </span>
+                      )}
+                    </div>
+                    <h3 className="text-sm font-semibold text-foreground leading-snug mt-1.5 line-clamp-2">
+                      {p.name}
+                    </h3>
+                    {p.inStock ? (
+                      <span className="inline-flex items-center gap-1 text-[10px] text-emerald-600 dark:text-emerald-400 font-medium mt-1.5">
+                        <CheckCircle2 className="w-3 h-3" />
+                        В наличност
+                      </span>
+                    ) : (
+                      <span className="inline-flex items-center gap-1 text-[10px] text-amber-600 dark:text-amber-400 font-medium mt-1.5">
+                        <Clock className="w-3 h-3" />
+                        {p.delivery}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                {/* Price hierarchy */}
+                <div className="mt-4 flex items-end justify-between border-t border-border pt-3">
+                  <div>
+                    <p className="text-[10px] text-muted-foreground font-semibold uppercase tracking-wider">
                       Продаваме
                     </p>
-                    <p className="text-base font-bold text-foreground mt-1">
+                    <p className="text-2xl font-bold text-foreground mt-0.5 tracking-tight">
                       €{formatMoney(p.sell.eur)}
                     </p>
-                    <p className="text-[10px] text-muted-foreground">
+                    <p className="text-[11px] text-muted-foreground">
                       {formatMoney(p.sell.bgn)} лв.
                     </p>
                   </div>
-                  <div className="bg-background rounded-xl p-3 border border-border">
-                    <p className="text-[10px] text-muted-foreground font-medium uppercase tracking-wide">
+                  <div className="text-right">
+                    <p className="text-[10px] text-muted-foreground font-medium uppercase tracking-wider">
                       Купуваме
                     </p>
-                    <p className="text-base font-bold text-foreground mt-1">
+                    <p className="text-sm font-semibold text-muted-foreground mt-0.5">
                       €{formatMoney(p.buy.eur)}
-                    </p>
-                    <p className="text-[10px] text-muted-foreground">
-                      {formatMoney(p.buy.bgn)} лв.
                     </p>
                   </div>
                 </div>
 
                 {/* Quantity + buy */}
-                <div className="mt-3 flex items-center justify-between gap-3">
-                  <div>
-                    <p className="text-[10px] text-muted-foreground font-medium mb-1">Количество</p>
-                    <div className="flex items-center bg-background border border-border rounded-xl">
-                      <button
-                        onClick={() => setQty(p.id, qty - 1)}
-                        className="w-8 h-8 flex items-center justify-center text-muted-foreground hover:text-foreground"
-                      >
-                        <Minus className="w-3.5 h-3.5" />
-                      </button>
-                      <span className="w-8 text-center text-sm font-semibold text-foreground">
-                        {qty}
-                      </span>
-                      <button
-                        onClick={() => setQty(p.id, qty + 1)}
-                        className="w-8 h-8 flex items-center justify-center text-muted-foreground hover:text-foreground"
-                      >
-                        <Plus className="w-3.5 h-3.5" />
-                      </button>
-                    </div>
+                <div className="mt-4 flex items-center gap-3">
+                  <div className="flex items-center bg-muted/60 rounded-full">
+                    <button
+                      onClick={() => setQty(p.id, qty - 1)}
+                      className="w-9 h-9 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      <Minus className="w-3.5 h-3.5" />
+                    </button>
+                    <span className="w-7 text-center text-sm font-bold text-foreground">
+                      {qty}
+                    </span>
+                    <button
+                      onClick={() => setQty(p.id, qty + 1)}
+                      className="w-9 h-9 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      <Plus className="w-3.5 h-3.5" />
+                    </button>
                   </div>
                   <motion.button
-                    whileTap={{ scale: 0.95 }}
+                    whileTap={{ scale: 0.97 }}
                     onClick={() => handleBuy(p)}
                     disabled={!p.inStock}
-                    className="flex-1 virr-gradient text-primary-foreground rounded-xl py-2.5 text-sm font-semibold flex items-center justify-center gap-1.5 disabled:opacity-50"
+                    className="flex-1 virr-gradient text-primary-foreground rounded-full py-2.5 text-sm font-semibold flex items-center justify-center gap-1.5 disabled:opacity-50 shadow-md"
                   >
                     <ShoppingCart className="w-4 h-4" />
-                    Купи €{formatMoney(p.sell.eur * qty)}
+                    Купи · €{formatMoney(p.sell.eur * qty)}
                   </motion.button>
                 </div>
               </div>
