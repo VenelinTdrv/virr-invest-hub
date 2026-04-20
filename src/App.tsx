@@ -29,6 +29,7 @@ import Notifications from "./pages/Notifications";
 import IdentityVerification from "./pages/IdentityVerification";
 import Welcome from "./pages/Welcome";
 import Basket from "./pages/Basket";
+import Gold from "./pages/Gold";
 
 const queryClient = new QueryClient();
 
@@ -64,6 +65,7 @@ const App = () => (
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/more" element={<More />} />
           <Route path="/basket" element={<Basket />} />
+          <Route path="/gold" element={<Gold />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
