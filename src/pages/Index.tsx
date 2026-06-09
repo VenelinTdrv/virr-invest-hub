@@ -6,8 +6,13 @@ import MonthlyChart from "@/components/mobile/MonthlyChart";
 import ProjectionChart from "@/components/mobile/ProjectionChart";
 import BottomNav from "@/components/mobile/BottomNav";
 import { TrendingUp, Percent, ArrowUpRight, ArrowDownRight } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
+import DashboardDesktop from "./desktop/DashboardDesktop";
 
 const Index = () => {
+  const isMobile = useIsMobile();
+  if (!isMobile) return <DashboardDesktop />;
+
   return (
     <div className="min-h-screen bg-background pb-28">
       {/* Header with Balance */}
