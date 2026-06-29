@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Investments from "./pages/Investments";
 import PrimaryMarket from "./pages/PrimaryMarket";
+import SecondaryMarket from "./pages/SecondaryMarket";
 import Deposit from "./pages/Deposit";
 import Withdraw from "./pages/Withdraw";
 import Transfer from "./pages/Transfer";
@@ -43,6 +44,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/investments" element={<Investments />} />
           <Route path="/primary-market" element={<PrimaryMarket />} />
+          <Route path="/secondary-market" element={<SecondaryMarket />} />
           <Route path="/deposit" element={<Deposit />} />
           <Route path="/withdraw" element={<Withdraw />} />
           <Route path="/transfer" element={<Transfer />} />

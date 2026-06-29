@@ -1,57 +1,11 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, SlidersHorizontal, X, Search, Info, ChevronDown, ShoppingCart } from "lucide-react";
+import { ArrowLeft, SlidersHorizontal, X, Search, ChevronDown, ShoppingCart } from "lucide-react";
 import { useState } from "react";
 import BottomNav from "@/components/mobile/BottomNav";
 import { useBasket } from "@/hooks/useBasket";
-import LoanCard from "@/components/mobile/LoanCard";
 import { useNavigate } from "react-router-dom";
 
-const loans = [
-  {
-    id: 12677,
-    contractNo: "000850125",
-    date: "2026-01-06 18:30",
-    originator: "ВИКТОРИЯ 111 ЕООД",
-    remainingPrincipal: { eur: "265,88", bgn: "520,02" },
-    loanAmount: { eur: "531,74", bgn: "1039,99" },
-    remainingTerm: "3 месеца",
-    initialTerm: "6 месеца",
-    profit: { eur: "4,47", bgn: "8,74" },
-    apr: "18.98%",
-    status: "В срок",
-    investAmount: { eur: "79,74", bgn: "155,96" },
-  },
-  {
-    id: 12678,
-    contractNo: "000850126",
-    date: "2026-01-06 18:30",
-    originator: "ВИКТОРИЯ 111 ЕООД",
-    remainingPrincipal: { eur: "324,65", bgn: "634,96" },
-    loanAmount: { eur: "649,34", bgn: "1270,00" },
-    remainingTerm: "3 месеца",
-    initialTerm: "6 месеца",
-    profit: { eur: "8,86", bgn: "17,33" },
-    apr: "18.99%",
-    status: "В срок",
-    investAmount: { eur: "157,92", bgn: "308,86" },
-  },
-  {
-    id: 12679,
-    contractNo: "000850130",
-    date: "2026-01-06 18:30",
-    originator: "ВИКТОРИЯ 111 ЕООД",
-    remainingPrincipal: { eur: "244,14", bgn: "477,50" },
-    loanAmount: { eur: "488,28", bgn: "954,99" },
-    remainingTerm: "3 месеца",
-    initialTerm: "6 месеца",
-    profit: { eur: "2,83", bgn: "5,53" },
-    apr: "19.00%",
-    status: "В срок",
-    investAmount: { eur: "50,46", bgn: "98,69" },
-  },
-];
-
-const PrimaryMarket = () => {
+const SecondaryMarket = () => {
   const [showFilters, setShowFilters] = useState(false);
   const basketItems = useBasket();
   const navigate = useNavigate();
@@ -71,7 +25,7 @@ const PrimaryMarket = () => {
               <ArrowLeft className="w-6 h-6" />
             </motion.button>
             <div>
-              <h1 className="text-lg font-bold">Първичен пазар</h1>
+              <h1 className="text-lg font-bold">Вторичен пазар</h1>
               <p className="text-xs text-primary-foreground/70">Инвестиране</p>
             </div>
           </div>
@@ -173,14 +127,21 @@ const PrimaryMarket = () => {
 
       {/* Results count */}
       <div className="px-4 mt-3 flex items-center justify-between">
-        <span className="text-xs text-muted-foreground">{loans.length} кредита намерени</span>
+        <span className="text-xs text-muted-foreground">0 кредита намерени</span>
       </div>
 
-      {/* Loan Cards */}
-      <div className="px-4 mt-3 space-y-3">
-        {loans.map((loan, index) => (
-          <LoanCard key={loan.id} loan={loan} delay={index * 0.1} />
-        ))}
+      {/* Empty state */}
+      <div className="px-4 mt-8">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="flex flex-col items-center justify-center py-20 text-center bg-card rounded-2xl border border-border virr-card-shadow"
+        >
+          <p className="text-muted-foreground font-medium">Няма активни оферти</p>
+          <p className="text-muted-foreground/70 text-sm mt-1 px-8">
+            В момента няма кредити за продажба на вторичния пазар.
+          </p>
+        </motion.div>
       </div>
 
       <BottomNav />
@@ -188,4 +149,4 @@ const PrimaryMarket = () => {
   );
 };
 
-export default PrimaryMarket;
+export default SecondaryMarket;
