@@ -16,7 +16,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background pb-28">
       {/* Header with Balance */}
-      <BalanceHeader balance="€1 648,25" userName="Венелин" />
+      <BalanceHeader balance="€1 648,25" availableBalance="€10,53" userName="Венелин" />
 
       {/* Main Content */}
       <div className="px-4 mt-4 space-y-4">
