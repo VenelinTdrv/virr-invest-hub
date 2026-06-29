@@ -73,15 +73,18 @@ const BalanceHeader = ({ balance, availableBalance, userName }: BalanceHeaderPro
           <motion.h1
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
-            className="text-2xl font-bold mb-2"
+            className="text-2xl font-bold"
           >
             {balance}
           </motion.h1>
-          <span className="inline-block px-3 py-1 bg-primary-foreground/20 rounded-full text-xs font-medium">
-            +€61,26 този месец
-          </span>
         </div>
       </div>
+      <div className="mt-3">
+        <span className="inline-block px-3 py-1 bg-primary-foreground/20 rounded-full text-xs font-medium">
+          +€61,26 този месец
+        </span>
+      </div>
+
     </motion.div>
   );
 };
