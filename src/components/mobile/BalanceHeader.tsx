@@ -57,17 +57,27 @@ const BalanceHeader = ({ balance, availableBalance, userName }: BalanceHeaderPro
         </div>
       </div>
 
-      <div className="text-center">
-        <p className="text-sm text-primary-foreground/70 mb-1">Общо салдо</p>
-        <motion.h1 
-          initial={{ scale: 0.9 }}
-          animate={{ scale: 1 }}
-          className="text-4xl font-bold mb-2"
-        >
-          {balance}
-        </motion.h1>
-        <div className="flex items-center justify-center gap-2">
-          <span className="px-3 py-1 bg-primary-foreground/20 rounded-full text-xs font-medium">
+      <div className="grid grid-cols-2 gap-4">
+        <div>
+          <p className="text-xs text-primary-foreground/70 mb-1">Налични средства</p>
+          <motion.h1
+            initial={{ scale: 0.9 }}
+            animate={{ scale: 1 }}
+            className="text-2xl font-bold"
+          >
+            {availableBalance}
+          </motion.h1>
+        </div>
+        <div>
+          <p className="text-xs text-primary-foreground/70 mb-1">Общо салдо</p>
+          <motion.h1
+            initial={{ scale: 0.9 }}
+            animate={{ scale: 1 }}
+            className="text-2xl font-bold mb-2"
+          >
+            {balance}
+          </motion.h1>
+          <span className="inline-block px-3 py-1 bg-primary-foreground/20 rounded-full text-xs font-medium">
             +€61,26 този месец
           </span>
         </div>
