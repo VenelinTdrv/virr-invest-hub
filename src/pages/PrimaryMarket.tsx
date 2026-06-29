@@ -55,6 +55,7 @@ const PrimaryMarket = () => {
   const [showFilters, setShowFilters] = useState(false);
   const basketItems = useBasket();
   const navigate = useNavigate();
+  const availableFunds = "€40";
 
   return (
     <div className="min-h-screen bg-background pb-28">
@@ -74,7 +75,8 @@ const PrimaryMarket = () => {
               <p className="text-xs text-primary-foreground/70">Инвестиране</p>
             </div>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
+            <span className="text-sm font-semibold">{availableFunds}</span>
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={() => navigate("/basket")}
