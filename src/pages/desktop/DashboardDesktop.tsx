@@ -72,12 +72,20 @@ const DashboardDesktop = () => {
             >
               <div className="absolute -right-16 -top-16 w-64 h-64 rounded-full bg-primary-foreground/10 blur-3xl" />
               <div className="relative">
-                <p className="text-sm text-primary-foreground/70 mb-2">Общо салдо</p>
-                <div className="flex items-end gap-4 mb-4">
-                  <h2 className="text-6xl font-bold tracking-tight">€1 648,25</h2>
-                  <span className="px-3 py-1.5 bg-primary-foreground/20 rounded-full text-xs font-medium mb-3">
-                    +€61,26 този месец
-                  </span>
+                <div className="grid grid-cols-2 gap-8 mb-6">
+                  <div>
+                    <p className="text-sm text-primary-foreground/70 mb-2">Общо салдо</p>
+                    <h2 className="text-5xl font-bold tracking-tight">€1 648,25</h2>
+                  </div>
+                  <div className="flex flex-col justify-between">
+                    <div>
+                      <p className="text-sm text-primary-foreground/70 mb-2">Налични средства</p>
+                      <h2 className="text-5xl font-bold tracking-tight">€10,53</h2>
+                    </div>
+                    <span className="self-start px-3 py-1.5 bg-primary-foreground/20 rounded-full text-xs font-medium">
+                      +€61,26 този месец
+                    </span>
+                  </div>
                 </div>
                 <div className="flex gap-3 mt-6">
                   <Button
