@@ -5,10 +5,11 @@ import { useNotifications } from "@/hooks/useNotifications";
 
 interface BalanceHeaderProps {
   balance: string;
+  availableBalance: string;
   userName: string;
 }
 
-const BalanceHeader = ({ balance, userName }: BalanceHeaderProps) => {
+const BalanceHeader = ({ balance, availableBalance, userName }: BalanceHeaderProps) => {
   const navigate = useNavigate();
   const { unreadCount } = useNotifications();
 
